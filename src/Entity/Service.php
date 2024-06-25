@@ -19,6 +19,7 @@ class Service
     #[ORM\Column]
     private ?float $price = null;
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +45,18 @@ class Service
     public function setPrice(float $price): static
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getServiceId(): ?string
+    {
+        return $this->service_id;
+    }
+
+    public function setServiceId(string $service_id): static
+    {
+        $this->service_id = $service_id;
 
         return $this;
     }

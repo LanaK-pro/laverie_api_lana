@@ -30,6 +30,9 @@ class User
     #[ORM\Column]
     private ?int $phone = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $pwd = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -91,6 +94,18 @@ class User
     public function setPhone(int $phone): static
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getPwd(): ?string
+    {
+        return $this->pwd;
+    }
+
+    public function setPwd(string $pwd): static
+    {
+        $this->pwd = $pwd;
 
         return $this;
     }

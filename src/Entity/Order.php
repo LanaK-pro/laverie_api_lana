@@ -21,6 +21,10 @@ class Order
     #[ORM\Column]
     private ?int $status = null;
 
+    #[ORM\ManyToOne(inversedBy: 'orders')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?UserEmployee $employeeId = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -46,6 +50,18 @@ class Order
     public function setStatus(int $status): static
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getEmployeeId(): ?UserEmployee
+    {
+        return $this->employeeId;
+    }
+
+    public function setEmployeeId(?UserEmployee $employeeId): static
+    {
+        $this->employeeId = $employeeId;
 
         return $this;
     }
